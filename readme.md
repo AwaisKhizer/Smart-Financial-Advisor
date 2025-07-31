@@ -46,7 +46,7 @@ The **Smart Financial Advisor** helps users:
 | Core Libraries   | `datetime`, `os`                              |
 
 ---
-# 📁 Project Structure
+## 📁 Project Structure
 
 smart-financial-advisor/
 ├── agent.py             # AI-based financial functions |
