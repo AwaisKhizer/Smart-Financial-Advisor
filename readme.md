@@ -46,58 +46,40 @@ The **Smart Financial Advisor** helps users:
 | Core Libraries   | `datetime`, `os`                              |
 
 ---
-# 📁 Project Structure
+## 📁 Project Structure
 
-smart-financial-advisor/
-├── agent.py             # AI-based financial functions
-├── app.py               # Main Streamlit application
-├── supabaseclient.py    # Initializes Supabase client
-├── utils.py             # Transaction functions (add/retrieve)
-├── .env                 # Environment variables (ignored in Git)
-├── .gitignore
-├── README.md            # Project documentation
+**smart-financial-advisor/**  
+├── `agent.py` – AI-based financial functions  
+├── `app.py` – Main Streamlit application  
+├── `supabaseclient.py` – Initializes Supabase client  
+├── `utils.py` – Transaction functions (add/retrieve)  
+├── `.env` – Environment variables (ignored in Git)  
+├── `.gitignore` – Git ignore file  
+├── `requirements.txt` – Python dependencies  
+├── `README.md` – Project documentation
 
-## 🤖 AI Integration (LangChain + Groq)
 
-The app uses **LangChain** to handle LLM interactions.  
-Specifically, it uses:
+---
+## 🧠 AI Agent Logic (LangChain + Groq)
+
+The app uses Groq’s **LLaMA 3** model via **LangChain** to generate insights from your financial data:
+
+### `run_budget_analysis()`
+- Analyzes income vs expenses
+- Identifies overspending
+- Provides 3 smart budgeting tips
+
+### `run_savings_advice()`
+- Evaluates monthly expenses
+- Suggests 3 personalized ways to reduce spending
+
+### `run_goal_planning()`
+- Plans how to save Rs. 100,000 in 6 months
+- Distributes savings based on expense types
+
+LLM is initialized via:
 
 ```python
 from langchain_groq import ChatGroq
-
-###  📄 File Descriptions
-
-- **`agent.py`**  
-  Defines 3 core AI-powered functions:  
-  - `run_budget_analysis()`: AI feedback on income vs expenses  
-  - `run_savings_advice()`: AI savings suggestions  
-  - `run_goal_planning()`: Create a 6-month savings plan
-
-- **`app.py`**  
-  Main Streamlit UI with navigation, forms, and transactions display.
-
-- **`supabaseclient.py`**  
-  Initializes Supabase connection using `.env` variables.
-
-- **`utils.py`**  
-  Handles data storage/retrieval from Supabase.
-
----
-
-## 🧰 Setup Instructions
-
-### 🔐 Prerequisites
-- Python 3.8+
-- Supabase account
-- Text editor (VS Code recommended)
-- Terminal/Command Prompt
-
----
-
-### 🧾 Steps
-
-1. **Clone the Repository**
-
-```bash
-git clone https://github.com/your-username/smart-financial-advisor.git
-cd smart-financial-advisor
+llm = ChatGroq(api_key=GROQ_API_KEY, model="llama3-8b-8192")
+ 
