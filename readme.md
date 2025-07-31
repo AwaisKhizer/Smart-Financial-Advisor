@@ -49,14 +49,14 @@ The **Smart Financial Advisor** helps users:
 # 📁 Project Structure
 
 smart-financial-advisor/
-├── agent.py             # AI-based financial functions
-├── app.py               # Main Streamlit application
-├── supabaseclient.py    # Initializes Supabase client
-├── utils.py             # Transaction functions (add/retrieve)
-├── .env                 # Environment variables (ignored in Git)
-├── .gitignore
-├── README.md            # Project documentation
-
+├── agent.py             # AI-based financial functions |
+├── app.py               # Main Streamlit application   |
+├── supabaseclient.py    # Initializes Supabase client  |
+├── utils.py             # Transaction functions (add/retrieve) |
+├── .env                 # Environment variables (ignored in Git) |
+├── .gitignore                                          |
+├── README.md            # Project documentation        |
+ 
 ## 🤖 AI Integration (LangChain + Groq)
 
 The app uses **LangChain** to handle LLM interactions.  
