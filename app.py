@@ -1,7 +1,6 @@
-# app.py
 import streamlit as st
 from datetime import datetime
-from utils import add_transaction, get_transactions
+from utils import add_transaction, get_transactions, delete_transaction
 from agents import run_budget_analysis, run_savings_advice, run_goal_planning
 
 st.set_page_config(page_title="Smart Financial Advisor", layout="wide")
@@ -55,6 +54,11 @@ if option == "\U0001F4C8 Expense Tracker":
             with st.expander(f"{label} - {t['category']} - Rs. {t['amount']}"):
                 st.write(f"\U0001F4DD {t['description']}")
                 st.write(f"\U0001F552 {t['timestamp']}")
+                
+                if st.button("🗑️ Delete", key=f"del_{t['id']}"):
+                    delete_transaction(t["id"])
+                    st.success("Transaction deleted!")
+                    st.rerun()
 
 elif option == "\U0001F4C8 Budget Analysis":
     st.header("\U0001F4C8 Budget Analysis with AI")
@@ -70,5 +74,3 @@ elif option == "\U0001F3AF Goal Planner":
     st.header("\U0001F3AF Goal-Based Saving Plan")
     result = run_goal_planning()
     st.write(result)
-
-

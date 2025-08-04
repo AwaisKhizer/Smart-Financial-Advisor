@@ -1,4 +1,4 @@
-from supabase_client import supabase
+from supabase_client import supabase 
 from datetime import datetime
 
 def add_transaction(t_type, category, amount, description):
@@ -10,7 +10,8 @@ def add_transaction(t_type, category, amount, description):
         "category": category,
         "amount": amount,
         "description": description,
-        "month": month_str
+        "month": month_str,
+        "timestamp": now.strftime("%Y-%m-%d %H:%M:%S")
     }).execute()
 
 def get_transactions(month=None):
@@ -19,3 +20,6 @@ def get_transactions(month=None):
         query = query.eq("month", month)
     data = query.execute()
     return data.data if data.data else []
+
+def delete_transaction(transaction_id):
+    supabase.table("transactions").delete().eq("id", transaction_id).execute()
